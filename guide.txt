@@ -3,7 +3,12 @@ pip install django -> Устанавливаем django в проект чере
 django-admin startproject core . -> Устанавливаем ядро django в папку под названием core
 python manage.py runserver -> Запускаем на нашем компьютере небольшой сервер(CTRL + C чтобы остановить)
 python manage.py startapp main_app -> Создаем приложение с именем main_app
+#### Всегда при создании нового applicationнужно его прописать в core/settings.py -> INSTALLED_APPS
 
+python manage.py makemigrations -> Создать файл для миграции моделей в базу данных
+python manage.py migrate -> Провести миграцию(Перенести модели в sql таблицы)
+
+python manage.py createsuperuser -> Зарегистрировать суперюзера(Админ со всеми правами доступа)
 
 Description(Core):
 manage.py -> Файл django, который отвечает за выполнение команд в проекте
