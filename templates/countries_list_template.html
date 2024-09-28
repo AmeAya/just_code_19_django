@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countries List Template</title>
+</head>
+<body>
+    <h1>{{ country_list }}</h1>
+
+    <ul>
+        {% for country in country_list %}
+            <li>{{ country }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

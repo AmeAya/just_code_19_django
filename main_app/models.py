@@ -29,11 +29,11 @@ class Countries(models.Model):
         return self.name
 
 
-# 1) Создать новую модель customers(покупатели)
-#    Фамилия
-#    Имя
-#    Email (EmailField)
-#    discount(Скидка, сколько процентов)
-# 2) Провести миграцию в ДБ(makemigrations, migrate)
-# 3) Созданную модель зарегистрировать в админке
-# 4) Прописать для модели def __str__(self), чтобы показывалось "<ИМЯ> <ФАМИЛИЯ>"
+class Customers(models.Model):
+    name = models.CharField(max_length=255)
+    surname = models.CharField(max_length=255)
+    email = models.EmailField()
+    discount = models.IntegerField()
+
+    def __str__(self):
+        return str(self.name) + ' ' + str(self.surname)

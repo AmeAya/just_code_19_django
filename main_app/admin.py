@@ -8,3 +8,4 @@ from .models import *
 
 admin.site.register(Products)  # Регистрируем модель Products в админке
 admin.site.register(Countries)  # Регистрируем модель Countries в админке
+admin.site.register(Customers)

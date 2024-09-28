@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers List Template</title>
+</head>
+<body>
+    <h1>{{ customer_list }}</h1>
+
+    <ul>
+        {% for customer in customer_list %}
+            <li>{{ customer }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
