@@ -20,6 +20,12 @@ from main_app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('countries', CountriesListView.as_view()),
-    path('customers', CustomersListView.as_view()),
+    path('countries', CountriesListView.as_view(), name='countries_list_url'),
+    path('customers', CustomersListView.as_view(), name='customers_list_url'),
+    path('products', ProductsListView.as_view(), name='products_list_url'),
+    path('country_detail/<int:pk>', CountriesDetailView.as_view(), name='countries_detail_url'),
+    # <int:pk> -> Будет стоять переменная типа int под именем pk
+    # pk - Primary Key -> Тоже самое что и id
+    # pk требуют DetailView, UpdateView, DeleteView
+    path('product_detail/<int:pk>', ProductDetailView.as_view(), name='products_detail_url'),
 ]

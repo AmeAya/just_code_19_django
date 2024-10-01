@@ -1,13 +1,7 @@
 from .models import *
-from django.views.generic import ListView
-# Генерики - views, которые были заранее написаны Django разработчиками
+from django.views.generic import ListView, DetailView
 
 
-# ListView -> Это вью, который берет ВСЕ данные из таблицы в виде списка
-# Указываем:
-# 1) model(Из какой модельки брать данные)
-# 2) context_object_name(Как назвать полученный список)
-# 3) template_name(Имя html файла, куда отправить данные)
 class CountriesListView(ListView):
     model = Countries
     context_object_name = 'country_list'
@@ -19,9 +13,25 @@ class CustomersListView(ListView):
     context_object_name = 'customer_list'
     template_name = 'customers_list_template.html'
 
-# 1) Для модельки Customers создать CustomersListView(views.py)
-# 2) Создать темплейт для CustomersListView(templates/...)
-# 3) В созданном теплейте с помощью цикла for в тэге ul
-#    выгрузить всех кастомеров
-# 4) Добавить маршрут к CustomersListView в core/urls.py
-# 5) Открыть страницу в браузере и убедиться что все работает
+
+class ProductsListView(ListView):
+    model = Products
+    context_object_name = 'product_list'
+    template_name = 'products_list_template.html'
+
+
+class CountriesDetailView(DetailView):
+    model = Countries
+    context_object_name = 'country_object'
+    template_name = 'countries_detail_template.html'
+
+
+class ProductDetailView(DetailView):
+    model = Products
+    context_object_name = 'product_object'
+    template_name = 'products_detail_template.html'
+
+
+# 1) Создать DetailView для модельки Products
+# 2) Создать template для вьюшки из 1 пункта
+# 3) Создать новый path в urls.py

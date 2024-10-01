@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products List Template</title>
+</head>
+<body>
+    <h1>{{ product_list }}</h1>
+
+    {% for product in product_list %}
+        <a href="{% url 'products_detail_url' product.pk %}">
+            {{ product.name }}
+        </a>
+        <br>
+    {% endfor %}
+
+    <a href="{% url 'countries_list_url' %}">Countries</a>
+</body>
+</html>
