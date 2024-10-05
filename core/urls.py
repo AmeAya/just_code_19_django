@@ -28,4 +28,7 @@ urlpatterns = [
     # pk - Primary Key -> Тоже самое что и id
     # pk требуют DetailView, UpdateView, DeleteView
     path('product_detail/<int:pk>', ProductDetailView.as_view(), name='products_detail_url'),
+    path('countries_create', CountriesCreateView.as_view(), name='countries_create_url'),
+    path('products_create', ProductsCreateView.as_view(), name='products_create_url'),
+    path('countries_delete/<int:pk>', CountriesDeleteView.as_view(), name='countries_delete_url'),
 ]

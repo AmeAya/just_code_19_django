@@ -1,5 +1,7 @@
 from .models import *
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
+from django.urls import reverse_lazy
+# reverse_lazy -> Ждет пока окончится процесс, и только после перенаправляет
 
 
 class CountriesListView(ListView):
@@ -32,6 +34,26 @@ class ProductDetailView(DetailView):
     template_name = 'products_detail_template.html'
 
 
-# 1) Создать DetailView для модельки Products
-# 2) Создать template для вьюшки из 1 пункта
-# 3) Создать новый path в urls.py
+# CreateView -> Джанговская Вью, которая нужна для создания объекта в БД(Insert)
+class CountriesCreateView(CreateView):
+    model = Countries
+    fields = ['name']  # fields -> list/tuple в котором указывается список полей для insert
+    # fields = '__all__'  # Взять все поля
+    template_name = 'countries_create_template.html'
+    # success_url -> URL куда перекидывать после сохранения
+    success_url = reverse_lazy('countries_list_url')
+    # reverse_lazy ждет пока сохранение пройдет
+
+
+class ProductsCreateView(CreateView):
+    model = Products
+    fields = '__all__'
+    template_name = 'products_create_template.html'
+    success_url = reverse_lazy('products_list_url')
+
+
+class CountriesDeleteView(DeleteView):
+    model = Countries
+    context_object_name = 'Country'
+    template_name = 'countries_delete_template.html'
+    success_url = reverse_lazy('countries_list_url')
