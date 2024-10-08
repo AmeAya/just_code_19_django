@@ -24,11 +24,10 @@ urlpatterns = [
     path('customers', CustomersListView.as_view(), name='customers_list_url'),
     path('products', ProductsListView.as_view(), name='products_list_url'),
     path('country_detail/<int:pk>', CountriesDetailView.as_view(), name='countries_detail_url'),
-    # <int:pk> -> Будет стоять переменная типа int под именем pk
-    # pk - Primary Key -> Тоже самое что и id
-    # pk требуют DetailView, UpdateView, DeleteView
     path('product_detail/<int:pk>', ProductDetailView.as_view(), name='products_detail_url'),
     path('countries_create', CountriesCreateView.as_view(), name='countries_create_url'),
     path('products_create', ProductsCreateView.as_view(), name='products_create_url'),
     path('countries_delete/<int:pk>', CountriesDeleteView.as_view(), name='countries_delete_url'),
+    path('countries_update/<int:pk>', CountriesUpdateView.as_view(), name='countries_update_url'),
+    path('', MainTemplateView.as_view(), name='main_url'),
 ]

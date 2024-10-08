@@ -1,5 +1,5 @@
 from .models import *
-from django.views.generic import ListView, DetailView, CreateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView, TemplateView
 from django.urls import reverse_lazy
 # reverse_lazy -> Ждет пока окончится процесс, и только после перенаправляет
 
@@ -57,3 +57,19 @@ class CountriesDeleteView(DeleteView):
     context_object_name = 'Country'
     template_name = 'countries_delete_template.html'
     success_url = reverse_lazy('countries_list_url')
+
+
+class CountriesUpdateView(UpdateView):
+    model = Countries
+    template_name = 'countries_update_template.html'
+    fields = ['name']
+    success_url = reverse_lazy('countries_list_url')
+
+# 1) Создать UpdateView для товаров(Products)
+# 2) В fields указать все поля (__all__)
+# 3) Создать темплейт для UpdateView
+# 4) Провести url к UpdateView
+
+
+class MainTemplateView(TemplateView):
+    template_name = 'main_template.html'
